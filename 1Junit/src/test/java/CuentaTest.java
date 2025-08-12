@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 class CuentaTest {
 
@@ -38,16 +40,32 @@ class CuentaTest {
         Cuenta cuenta2 = new Cuenta("Eva", new BigDecimal("1500.8989"));
 
         Banco banco = new Banco();
-
-
         banco.setNombre("Banco Sabadell");
 
         banco.addCuenta(cuenta1);
         banco.addCuenta(cuenta2);
 
-        Assertions.assertEquals(2, banco.getCuentas().size());
 
-        Assertions.assertEquals("Banco Sabadell", cuenta1.getBanco().getNombre());
+        Assertions.assertAll( () -> {
+
+        },
+                () ->  Assertions.assertEquals(2, banco.getCuentas().size()),
+                () -> Assertions.assertEquals("Banco Sabadell", cuenta1.getBanco().getNombre()),
+                ()-> Assertions.assertTrue(banco.getCuentas().stream().anyMatch( c -> c.getPersona().equals("Juan")))
+
+        );
+
+
+
+        /*
+                Assertions.assertEquals(2, banco.getCuentas().size());
+                Assertions.assertEquals("Banco Sabadel", cuenta1.getBanco().getNombre());
+                Assertions.assertTrue(banco.getCuentas().stream().anyMatch( c -> c.getPersona().equals("Mario")));
+         */
+
+
+
+
 
 
     }
