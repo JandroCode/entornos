@@ -13,4 +13,9 @@ public class ExamenRepositoryImpl implements  ExamenRepository{
                 new Examen(6L, "Languaje"),
                 new Examen(7L, "Historia"));
     }
+
+    @Override
+    public Examen guardar(Examen examen) {
+        return null;
+    }
 }
